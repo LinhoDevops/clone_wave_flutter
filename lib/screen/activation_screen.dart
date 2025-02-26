@@ -30,12 +30,10 @@ class _ActivationScreenState extends State<ActivationScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Afficher l'image ou un placeholder
             Container(
               height: 100,
               width: 100,
-              child: widget.bankItem.img ??
-                  const Icon(Icons.account_balance, size: 80, color: Colors.grey),
+              child: widget.bankItem.img
             ),
             const SizedBox(height: 20),
             const Text(

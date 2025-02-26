@@ -213,18 +213,17 @@ class _BankGroup extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          width: double.infinity, // Occupe toute la largeur
+          width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-          color: Colors.white, // Arrière-plan blanc
+          color: Colors.white,
           child: Text(
             label,
             style: const TextStyle(
-              fontWeight: FontWeight.bold, // Texte en gras
+              fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
           ),
         ),
-        // Liste des éléments
         ...items.map((bank) => BankItemWidget(bankItem: bank)),
       ],
     );

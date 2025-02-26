@@ -20,19 +20,34 @@ class BankItemWidget extends StatelessWidget {
         );
       },
       child: Container(
-        color: Colors.white, // Arrière-plan blanc
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24), // Padding réduit
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        decoration:  const BoxDecoration(
+          color: Colors.white,
+        //  border: Border(bottom: BorderSide(color: Colors.grey, width: 0.5)),
+        ),
         child: Row(
           children: [
             Container(
-              height: 36, // Taille réduite
-              width: 36, // Taille réduite
-              child: bankItem.img,
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: bankItem.bgColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: bankItem.img, // Image du logo
+              ),
             ),
             const SizedBox(width: 16),
-            Text(
-              bankItem.name,
-              style: const TextStyle(fontSize: 16),
+
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                child: Text(
+                  bankItem.name,
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
             ),
           ],
         ),
