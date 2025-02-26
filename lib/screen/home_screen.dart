@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_wave/models/options.dart';
+import 'package:my_wave/models/transaction.dart';
 import 'package:my_wave/screen/bank_screen.dart';
+import 'package:my_wave/screen/search_transaction_screen.dart';
 import 'package:my_wave/screen/settings_screen.dart';
 import 'package:my_wave/screen/transfer_screen.dart';
+
 
 import '../models/transaction.dart';
 import '../widgets/card_widget.dart';
@@ -216,13 +219,50 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Colors.grey,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400),
+
                               )
+
                             ],
+
                           ),
                         );
                       },
                     ),
                   ),
+                  Container(
+                    color: Colors.white,
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor.withOpacity(0.3), // Couleur avec opacité
+                          borderRadius: BorderRadius.circular(20), // Même borderRadius que le bouton
+                        ),
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) {
+                                  return const TransactionScreen();
+                                },
+                              ));
+                          },
+                          icon: const Icon(Icons.search, color: Color(0xff4749cd)),
+                          label: const Text(
+                            "Rechercher",
+                            style: TextStyle(color: Color(0xff4749cd)),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                           // shadowColor:  Theme.of(context).primaryColor.withOpacity(.3),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
                 ],
               ))
         ],
@@ -260,3 +300,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
