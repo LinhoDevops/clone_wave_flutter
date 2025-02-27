@@ -32,7 +32,7 @@ class TransactionScreenState extends State<TransactionScreen> {
     }
   }
 
-  List<Transaction> _getMergedTransactions() {
+  List<Transaction> getMergedTransactions() {
     if (selectedType == null) {
       return transactionItems;
     } else {
@@ -40,7 +40,7 @@ class TransactionScreenState extends State<TransactionScreen> {
     }
   }
 
-  void _filterTransactions() {
+  void filterTransactions() {
     final text = controller.text.trim().toLowerCase();
     setState(() {
       transactionItems = Transaction.tList
@@ -53,12 +53,12 @@ class TransactionScreenState extends State<TransactionScreen> {
   void initState() {
     super.initState();
     transactionItems = List<Transaction>.from(Transaction.tList);
-    controller.addListener(_filterTransactions);
+    controller.addListener(filterTransactions);
   }
 
   @override
   void dispose() {
-    controller.removeListener(_filterTransactions);
+    controller.removeListener(filterTransactions);
     controller.dispose();
     super.dispose();
   }
@@ -88,7 +88,7 @@ class TransactionScreenState extends State<TransactionScreen> {
             height: 80,
             child: Row(
               children: [
-                _TabSwitcher(
+                TabSwitcher(
                   onPressed: () {
                     setState(() {
                       selectedType = (selectedType == ActionType.transfert)
@@ -101,7 +101,7 @@ class TransactionScreenState extends State<TransactionScreen> {
                   icon: Icons.person,
                 ),
                 const SizedBox(width: 12),
-                _TabSwitcher(
+                TabSwitcher(
                   onPressed: () {
                     setState(() {
                       selectedType = (selectedType == ActionType.facture)
@@ -123,9 +123,9 @@ class TransactionScreenState extends State<TransactionScreen> {
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const ClampingScrollPhysics(),
-                itemCount: _getMergedTransactions().length,
+                itemCount: getMergedTransactions().length,
                 itemBuilder: (context, index) {
-                  Transaction t = _getMergedTransactions()[index];
+                  Transaction t = getMergedTransactions()[index];
 
                   // Détermine si la transaction est un crédit ou un débit
                   bool credit = t.type == TransactionType.transferE || t.type == TransactionType.deposit;
@@ -182,13 +182,13 @@ class TransactionScreenState extends State<TransactionScreen> {
   }
 }
 
-class _TabSwitcher extends StatelessWidget {
+class TabSwitcher extends StatelessWidget {
   final String label;
   final IconData icon;
   final bool selected;
   final Function() onPressed;
 
-  const _TabSwitcher({
+  const TabSwitcher({
     required this.label,
     required this.icon,
     required this.selected,
