@@ -68,6 +68,11 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/pays/
+    - assets/images/pays/BF.png
+    - assets/images/pays/CI.png
+    - assets/images/pays/ML.png
+    - assets/images/pays/SN.png
     - assets/images/uba.png
     - assets/images/ecobank.png
     - assets/images/bis.png

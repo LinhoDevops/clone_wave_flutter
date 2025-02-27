@@ -7,7 +7,6 @@ import 'package:my_wave/screen/settings_screen.dart';
 import 'package:my_wave/screen/transfer_screen.dart';
 
 
-import '../models/transaction.dart';
 import '../widgets/card_widget.dart';
 import 'credit_screen.dart';
 

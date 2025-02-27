@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_wave/screen/account_creen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -54,23 +55,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             shrinkWrap: true,
                             physics: const ClampingScrollPhysics(),
                             children: [
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                child: const Row(
-                                  children:  [
-                                    Icon(
-                                      Icons.account_box_outlined,
-                                      size: 30,
-                                    ),
-                                    SizedBox(width: 16),
-                                    Flexible(child: Text(
-                                      "Ajouter un autre compte",
-                                      style: TextStyle(fontSize: 16),
-                                    ))
-                                  ],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const AddAccountScreen()),
+                                  );
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  child: const Row(
+                                    children:  [
+                                      Icon(
+                                        Icons.account_box_outlined,
+                                        size: 30,
+                                      ),
+                                      SizedBox(width: 16),
+                                      Flexible(child: Text(
+                                        "Ajouter un autre compte",
+                                        style: TextStyle(fontSize: 16),
+                                      ))
+                                    ],
+                                  ),
                                 ),
                               ),
-
                             ],
                           ),
                         ),
