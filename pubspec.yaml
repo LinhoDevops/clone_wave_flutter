@@ -77,7 +77,8 @@ flutter:
     - assets/images/ecobank.png
     - assets/images/bis.png
     - assets/images/boa.png
-    - assets/images/orabank.png
+    - assets/images/boa.png
+    - assets/images/sunubrt.png
     - assets/images/launcher.png
     - assets/images/banque-atlantique.png
   #   - images/a_dot_burr.jpeg

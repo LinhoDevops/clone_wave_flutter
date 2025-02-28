@@ -14,78 +14,27 @@ class BankScreen extends StatefulWidget {
 
 class _BankScreenState extends State<BankScreen> {
   BankType? selectedType;
-  final controller = TextEditingController();
-  late List<BankItem> bankItems;
+  final TextEditingController controller = TextEditingController();
+  late List<BankItem> filteredBankItems;
 
-  List<BankItem> _filterBanksByType(BankType type) =>
-      bankItems.where((bank) => bank.type == type).toList();
+  @override
+  void initState() {
+    super.initState();
+    filteredBankItems = List.from(bankItems);
+    controller.addListener(_filterBanks);
+  }
 
   void _filterBanks() {
     final text = controller.text.trim().toLowerCase();
-
     setState(() {
-      bankItems = bankItems
+      filteredBankItems = bankItems
           .where((bank) => bank.name.toLowerCase().contains(text))
           .toList();
     });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    // Initialisez bankItems avec la liste des banques
-    bankItems = [
-      BankItem(
-        name: 'Banque Altantique',
-        img: Image.asset('assets/images/banque-atlantique.png'),
-        bgColor: const Color(0xfffbeadc),
-        type: BankType.bank,
-      ),
-      BankItem(
-        name: "Banque de l'Habitat du Sénégal",
-        img: Image.asset('assets/images/bhs.png'),
-        bgColor: const Color(0xffedf7e9),
-        type: BankType.sfd,
-      ),
-      BankItem(
-        name: 'Banque Islamique',
-        img: Image.asset('assets/images/bis.png'),
-        bgColor: const Color(0xffedf7e9),
-        type: BankType.sfd,
-      ),
-      BankItem(
-        name: 'BOA',
-        img: Image.asset('assets/images/boa.png'),
-        bgColor: const Color(0xffbddecc),
-        type: BankType.bank,
-      ),
-      BankItem(
-        name: 'CBAO',
-        img: Image.asset('assets/images/cbao.png'),
-        bgColor: const Color(0xffbddecc),
-        type: BankType.bank,
-      ),
-      BankItem(
-        name: 'Ecobank',
-        img: Image.asset('assets/images/ecobank.png'),
-        bgColor: const Color(0xffd8e6ed),
-        type: BankType.bank,
-      ),
-      BankItem(
-        name: 'Orabank',
-        img: Image.asset('assets/images/orabank.png'),
-        bgColor: const Color(0xffedf7e9),
-        type: BankType.bank,
-      ),
-      BankItem(
-        name: 'UBA',
-        img: Image.asset('assets/images/uba.png'),
-        bgColor: const Color.fromARGB(255, 184, 232, 166),
-        type: BankType.bank,
-      ),
-    ];
-    controller.addListener(_filterBanks);
-  }
+  List<BankItem> _filterBanksByType(BankType type) =>
+      filteredBankItems.where((bank) => bank.type == type).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +111,7 @@ class _BankScreenState extends State<BankScreen> {
 
   @override
   void dispose() {
-    controller.removeListener(_filterBanks); // Retirez l'écouteur avant de disposer
+    controller.removeListener(_filterBanks);
     controller.dispose();
     super.dispose();
   }

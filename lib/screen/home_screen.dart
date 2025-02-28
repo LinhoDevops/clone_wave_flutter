@@ -5,6 +5,7 @@ import 'package:my_wave/screen/bank_screen.dart';
 import 'package:my_wave/screen/search_transaction_screen.dart';
 import 'package:my_wave/screen/settings_screen.dart';
 import 'package:my_wave/screen/transfer_screen.dart';
+import 'package:my_wave/screen/transport_screen.dart';
 
 
 import '../widgets/card_widget.dart';
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Cadeaux",
         icon: Icons.card_giftcard_outlined,
         color: Colors.green),
+    Option(title : "Transport", icon: Icons.bus_alert_outlined, color: Colors.yellow),
   ];
 
   @override
@@ -158,6 +160,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) {
                                       return const BankScreen();
+                                    },
+                                  ));
+                                  break;
+
+                                case 5:
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) {
+                                      return const TransportScreen();
                                     },
                                   ));
                                   break;

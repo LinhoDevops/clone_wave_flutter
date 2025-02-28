@@ -28,7 +28,6 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
     const CountryModel(name: 'Code d\'Ivoire', code: '+225', indicator: 'assets/images/pays/CI.png'),
     const CountryModel(name: 'Mail', code: '+223', indicator: 'assets/images/pays/ML.png'),
     const CountryModel(name: 'Sénégal', code: '+221', indicator: 'assets/images/pays/SN.png'),
-    // Ajoutez d'autres pays ici
   ];
 
   @override
@@ -83,8 +82,7 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
                     ),
                   ),
 
-                  // Espace flexible pour centrer le texte
-                  Expanded(
+                  const  Expanded(
                     child: Center(
                       child: const Text(
                         'Sélectionnez votre pays',
@@ -99,7 +97,6 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
               ),
             ),
 
-            // Liste des pays
             Expanded(
               child: ListView.builder(
                 itemCount: countries.length,
@@ -124,7 +121,7 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
                       setState(() {
                         selectedCountry = country;
                       });
-                      Navigator.pop(context); // Fermer le modal après sélection
+                      Navigator.pop(context);
                     },
                   );
                 },
@@ -135,7 +132,6 @@ class _PhoneInputFieldState extends State<PhoneInputField> {
       },
     );
   }
-  // Méthode pour déterminer le format du numéro
   String _getPhoneNumberFormat() {
     if (selectedCountry.code == '+221') {
       return '7X XXX XX XX'; // Format pour le Sénégal
