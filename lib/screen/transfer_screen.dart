@@ -41,11 +41,12 @@ class _OperationScreenState extends State<OperationScreen> {
       if (favorites.contains(contact)) {
         favorites.remove(contact);
         contacts.add(contact);
-        contacts.sort((a, b) => a.displayName.compareTo(b.displayName));
       } else {
         contacts.remove(contact);
         favorites.add(contact);
       }
+      contacts.sort((a, b) => a.displayName.compareTo(b.displayName)); // Trie les contacts après modification
+      filteredContacts = List.from(contacts); // Met à jour la liste filtrée
     });
   }
 
@@ -113,14 +114,10 @@ class _OperationScreenState extends State<OperationScreen> {
   }
 
   Widget buildContactItem(Contact contact, {bool isFavorite = false}) {
+    // Récupérer le numéro de téléphone
     String number = contact.phones.isNotEmpty
-        ? contact.phones[0].normalizedNumber
+        ? contact.phones[0].number // Utilisez directement le numéro de téléphone
         : "Numéro inconnu";
-
-    // Retirer le préfixe "+221" uniquement si présent
-    if (number.startsWith("+221")) {
-      number = number.replaceFirst("+221", "");
-    }
 
     return GestureDetector(
       onDoubleTap: () => toggleFavorite(contact),
@@ -155,9 +152,9 @@ class _OperationScreenState extends State<OperationScreen> {
                 ),
                 const SizedBox(height: 4), // Espace entre le nom et le numéro
 
-                // Numéro de téléphone sans le préfixe +221
+                // Numéro de téléphone
                 Text(
-                  number, // Affichage du numéro sans le préfixe +221
+                  number, // Affichage du numéro de téléphone
                   style: TextStyle(
                     color: Colors.grey[600],
                     fontSize: 14, // Taille de police ajustée

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_wave/screen/account_creen.dart';
+import 'package:my_wave/screen/plafond_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -213,20 +214,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 ),
                               ),
 
-                              Container(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                child: const Row(
-                                  children:  [
-                                    Icon(
-                                      CupertinoIcons.square_favorites_fill,
-                                      size: 30,
-                                    ),
-                                    SizedBox(width: 16),
-                                    Flexible(child: Text(
-                                      "Vérifiez votre plafond",
-                                      style: TextStyle(fontSize: 16),
-                                    ))
-                                  ],
+                              GestureDetector(
+
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const PlafondScreen()),
+                                  );
+                                },
+
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 16),
+                                  child: const Row(
+                                    children:  [
+
+                                      Icon(
+                                        CupertinoIcons.square_favorites_fill,
+                                        size: 30,
+                                      ),
+                                      SizedBox(width: 16),
+                                      Flexible(child: Text(
+                                        "Vérifiez votre plafond",
+                                        style: TextStyle(fontSize: 16),
+                                      ))
+                                    ],
+                                  ),
                                 ),
                               ),
 

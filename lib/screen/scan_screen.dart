@@ -52,6 +52,7 @@ class _ScanScreenState extends State<ScanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var index = 0;
     return Scaffold(
       body: Stack(
         children: [
@@ -72,24 +73,29 @@ class _ScanScreenState extends State<ScanScreen> {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            padding: EdgeInsets.only(bottom: 50),
+            padding: const EdgeInsets.only(bottom: 50),
             child: ToggleSwitch(
               minWidth: 160.0,
               cornerRadius: 20.0,
+
               activeBgColors: [
-                [Colors.green[800]!],
-                [Colors.red[800]!]
+                [Colors.grey.withOpacity(0.5)],
+                [Colors.white!]
               ],
-              activeFgColor: Colors.white,
-              inactiveBgColor: Colors.grey,
-              inactiveFgColor: Colors.white,
+              activeFgColor: currentPage == 0 ? Colors.white : Colors.black,
+              inactiveBgColor: currentPage == 0 ? Colors.black.withOpacity(0.5) : Colors.grey.withOpacity(0.5),
+              inactiveFgColor: currentPage == 0 ? Colors.white : Colors.black,
               initialLabelIndex: currentPage,
               totalSwitches: 2,
               labels: ['Scanner un code', 'Ma carte'],
               radiusStyle: true,
+
               onToggle: (index) {
-                currentPage = index!;
-                pageController.jumpToPage(index);
+                setState(() {
+                  currentPage = index!;
+                  pageController.jumpToPage(index);
+                });
+
               },
             ),
           )

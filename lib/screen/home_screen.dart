@@ -9,7 +9,6 @@ import 'package:my_wave/screen/transport_screen.dart';
 
 
 import '../widgets/card_widget.dart';
-import 'credit_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -151,7 +150,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 case 2:
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) {
-                                      return const CreditScreen();
+                                      return const OperationScreen(
+                                        isTransfer: false,
+                                      );
+
                                     },
                                   ));
                                   break;
